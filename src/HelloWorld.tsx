@@ -24,10 +24,10 @@ export const HelloWorld: React.FC = ({}) => {
           473, 477, 480, 483, 489, 493, 496, 500, 502, 508, 512,
         ],
         [
-          180, 100, 150, 100, 120, 150, 100, 180, 100, 125, 150, 100, 130, 159,
-          100, 125, 150, 100, 130, 100, 150, 100, 120, 150, 100, 100, 130, 100,
+          90, 100, 150, 100, 120, 150, 100, 180, 100, 125, 150, 100, 130, 159,
+          100, 125, 150, 100, 130, 100, 80, 100, 120, 150, 100, 100, 130, 100,
           160, 140, 120, 128, 144, 100, 110, 105, 111, 133, 123, 139, 150, 122,
-          150, 100, 120, 150, 100, 100, 130, 100, 150, 100, 105,
+          150, 100, 120, 150, 100, 100, 80, 100, 150, 100, 105,
         ],
         {
           extrapolateLeft: "clamp",
@@ -57,7 +57,7 @@ export const HelloWorld: React.FC = ({}) => {
           120, 100, 150, 100, 120, 180, 100, 150, 100, 125, 150, 100, 130, 100,
           150, 100, 120, 150, 100, 180, 100, 150, 100, 130, 100, 150, 100, 100,
           120, 150, 100, 100, 150, 100, 105, 150, 100, 120, 150, 100, 180, 100,
-          150, 125, 150, 100, 130, 100, 150, 100, 100, 150, 100,
+          150, 125, 150, 80, 90, 80, 90, 80, 100, 150, 100,
         ],
         {
           extrapolateLeft: "clamp",
@@ -154,8 +154,12 @@ export const HelloWorld: React.FC = ({}) => {
       ),
     },
   ];
+  const smallCirclePositions = [
+    { x: 200, y: -20 },
+    { x: 400, y: -20 },
+    { x: 0, y: -150 },
+  ];
 
-  // Fade out the animation at the end
   const scale = interpolate(
     frame,
     [0, 20, 21, 25, 30, 48, 50, 65, 69, 71, 73, 84, 271, 272, 280, 512],
@@ -169,15 +173,7 @@ export const HelloWorld: React.FC = ({}) => {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const height = interpolate(
-    frame,
-    [275, 279, 285, 290, 300, 304, 308, 315, 328],
-    [180, 100, 150, 100, 180, 100, 150, 100, 120],
-    {
-      extrapolateLeft: "clamp",
-      extrapolateRight: "clamp",
-    },
-  );
+
   const shrink = interpolate(frame, [271, 280], [1, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
@@ -237,33 +233,30 @@ export const HelloWorld: React.FC = ({}) => {
 
   const CircleSmall = () => {
     const smallCircleShift = useSpring({
-      from: { x: moveChunkX, y: moveChunkY }, // Start at the origin (inside the large circle)
-      to: { x: moveChunkX, y: moveChunkY }, // End position, moving away from the large circle
-      config: { tension: 120, friction: 14 }, // Spring config for smoothness
-      loop: false, // You can set this to true if you want it to loop
+      from: { x: moveChunkX, y: moveChunkY },
+      to: { x: moveChunkX, y: moveChunkY },
+      config: { tension: 120, friction: 14 },
+      loop: false,
     });
     return (
       <animated.div
-        className="w-20 h-20 bg-white rounded-full mx-auto my-auto absolute  inset-0"
+        className="w-16 h-20 bg-white rounded-full mx-auto my-auto absolute  inset-0"
         style={{
           ...smallCircleShift,
           opacity: opacity3,
           filter: "url(#goo)",
           scale: shrink,
+          transform: orbitAnimation.rotate.to((r) => `rotate(${r}deg)`),
         }}
       >
-        {trail2.map((style, idx) => (
+        {trail2.map((style, index) => (
           <animated.div
-            className="w-4 h-12 bg-white inset-0"
+            className="w-4 h-12 relative bg-white rounded-full inset-0"
             style={{
               ...style,
-              position: "relative", // Make sure it's positioned absolutely
-              transformOrigin: "0 center", // Adjust orbit radius
-              transform: orbitAnimation.rotate.to((r) => `rotate(${r}deg)`),
-              // translateX: translateX,
-              borderRadius: "999px",
-              x: "0",
-              y: "0",
+              transform: style.scale.to((s) => `scale(${s})`),
+              x: smallCirclePositions[index].x + "%",
+              y: smallCirclePositions[index].y + "%",
               filter: "url(#goo)",
               opacity: opacity2,
             }}
@@ -278,28 +271,39 @@ export const HelloWorld: React.FC = ({}) => {
     [
       143, 153, 163, 173, 183, 193, 203, 213, 223, 233, 243, 253, 271, 272, 280,
       512,
-    ], // Scaling from start to halfway and back to start
-    [1, 1.05, 1, 1, 1.05, 1, 1, 1.05, 1, 1, 1.05, 1, 1.1, 1, 1, 1], // Scale down to 0.5, then up to 1, and back down
+    ],
+    [1, 1.05, 1, 1, 1.05, 1, 1, 1.05, 1, 1, 1.05, 1, 1.1, 1, 1, 1],
+  );
+  const scaleValue2 = interpolate(
+    frame,
+    [
+      143, 153, 163, 173, 183, 193, 203, 213, 223, 233, 243, 253, 271, 272, 280,
+      512,
+    ],
+    [
+      1.2, 1.05, 1.2, 1, 1.05, 1.2, 1, 1.05, 1.2, 1.3, 1.05, 1.2, 1.1, 1.2, 1.3,
+      1,
+    ],
   );
   const trail = useTrail(circles.length, {
-    scale: scaleValue, // Use frame-based scaling
-    config: { tension: 200, friction: 10 },
+    scale: scaleValue,
+    config: { tension: 100, friction: 10 },
   });
-  const trail2 = useTrail(2, {
-    scale: scaleValue, // Use frame-based scaling
-    config: { tension: 200, friction: 3 },
+  const trail2 = useTrail(3, {
+    scale: scaleValue2,
+    config: { tension: 100, friction: 10 },
   });
   const orbitAnimation = useSpring({
     from: { rotate: 0 },
     to: { rotate: 360 },
-    loop: true, // Infinite loop for continuous rotation
-    config: { duration: 2000 }, // 3 seconds per revolution
+    loop: true,
+    config: { duration: 25000 },
   });
   const orbitAnimation2 = useSpring({
     from: { rotate: 0 },
     to: { rotate: 360 },
-    loop: true, // Infinite loop for continuous rotation
-    config: { duration: 8000 }, // 3 seconds per revolution
+    loop: true,
+    config: { duration: 30000 },
   });
 
   return (
@@ -318,10 +322,10 @@ export const HelloWorld: React.FC = ({}) => {
           {trail.map((style, index) => {
             return (
               <animated.div
+                className="absolute visible rounded-full"
                 key={index}
                 style={{
                   ...style,
-                  position: "absolute", // Make sure it's positioned absolutely
                   width: "180px",
                   height: frame < 271 ? "180px" : circles[index].height + "px",
                   backgroundColor: "white",
@@ -331,7 +335,6 @@ export const HelloWorld: React.FC = ({}) => {
                   y: circles[index].moveCircleY + "%",
                   filter: "url(#goo)",
                   opacity: opacity3,
-                  visibility: "visible",
                   scaleX: scale2,
                 }}
               />
