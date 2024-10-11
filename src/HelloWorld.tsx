@@ -1,11 +1,4 @@
-import { spring } from "remotion";
-import {
-  AbsoluteFill,
-  interpolate,
-  Sequence,
-  useCurrentFrame,
-  useVideoConfig,
-} from "remotion";
+import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 
 import { animated, useSpring, useTrail } from "@react-spring/web";
 import React from "react";
@@ -14,10 +7,7 @@ export const HelloWorld: React.FC = ({}) => {
   const frame = useCurrentFrame();
   const circles = [
     {
-      x: 30,
-      y: 100,
-      transformOri: "150px center",
-      moveCircleX: interpolate(frame, [271, 281], [30, -200], {
+      moveCircleX: interpolate(frame, [271, 281], [30, -90], {
         extrapolateLeft: "clamp",
         extrapolateRight: "clamp",
       }),
@@ -25,12 +15,29 @@ export const HelloWorld: React.FC = ({}) => {
         extrapolateLeft: "clamp",
         extrapolateRight: "clamp",
       }),
+      height: interpolate(
+        frame,
+        [
+          275, 279, 285, 290, 300, 304, 308, 315, 328, 330, 339, 344, 350, 353,
+          359, 364, 370, 373, 379, 384, 386, 389, 390, 393, 398, 401, 405, 408,
+          413, 418, 424, 428, 433, 437, 439, 444, 449, 452, 456, 458, 463, 469,
+          473, 477, 480, 483, 489, 493, 496, 500, 502, 508, 512,
+        ],
+        [
+          180, 100, 150, 100, 120, 150, 100, 180, 100, 125, 150, 100, 130, 159,
+          100, 125, 150, 100, 130, 100, 150, 100, 120, 150, 100, 100, 130, 100,
+          160, 140, 120, 128, 144, 100, 110, 105, 111, 133, 123, 139, 150, 122,
+          150, 100, 120, 150, 100, 100, 130, 100, 150, 100, 105,
+        ],
+        {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        },
+      ),
     },
+
     {
-      x: 90,
-      y: 50,
-      transformOri: "152px center",
-      moveCircleX: interpolate(frame, [271, 281], [90, -50], {
+      moveCircleX: interpolate(frame, [271, 281], [90, -5], {
         extrapolateLeft: "clamp",
         extrapolateRight: "clamp",
       }),
@@ -38,12 +45,28 @@ export const HelloWorld: React.FC = ({}) => {
         extrapolateLeft: "clamp",
         extrapolateRight: "clamp",
       }),
+      height: interpolate(
+        frame,
+        [
+          275, 279, 285, 290, 300, 304, 308, 315, 328, 330, 339, 344, 350, 353,
+          359, 364, 370, 373, 379, 384, 386, 389, 390, 393, 398, 401, 405, 408,
+          413, 418, 424, 428, 433, 437, 439, 444, 449, 452, 456, 458, 463, 469,
+          473, 477, 480, 483, 489, 493, 496, 500, 502, 508, 512,
+        ],
+        [
+          120, 100, 150, 100, 120, 180, 100, 150, 100, 125, 150, 100, 130, 100,
+          150, 100, 120, 150, 100, 180, 100, 150, 100, 130, 100, 150, 100, 100,
+          120, 150, 100, 100, 150, 100, 105, 150, 100, 120, 150, 100, 180, 100,
+          150, 125, 150, 100, 130, 100, 150, 100, 100, 150, 100,
+        ],
+        {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        },
+      ),
     },
     {
-      x: -10,
-      y: 50,
-      transformOri: "155px center",
-      moveCircleX: interpolate(frame, [271, 281], [-10, 0], {
+      moveCircleX: interpolate(frame, [271, 281], [-10, -5], {
         extrapolateLeft: "clamp",
         extrapolateRight: "clamp",
       }),
@@ -51,12 +74,28 @@ export const HelloWorld: React.FC = ({}) => {
         extrapolateLeft: "clamp",
         extrapolateRight: "clamp",
       }),
+      height: interpolate(
+        frame,
+        [
+          275, 279, 285, 290, 300, 304, 308, 315, 328, 330, 339, 344, 350, 353,
+          359, 364, 370, 373, 379, 384, 386, 389, 390, 393, 398, 401, 405, 408,
+          413, 418, 424, 428, 433, 437, 439, 444, 449, 452, 456, 458, 463, 469,
+          473, 477, 480, 483, 489, 493, 496, 500, 502, 508, 512,
+        ],
+        [
+          100, 150, 100, 120, 180, 100, 150, 100, 180, 100, 120, 150, 100, 180,
+          100, 150, 100, 130, 100, 150, 100, 120, 150, 100, 180, 100, 150, 125,
+          150, 100, 130, 100, 150, 100, 180, 100, 125, 150, 100, 100, 150, 100,
+          125, 150, 100, 130, 100, 100, 120, 180, 100, 150, 100,
+        ],
+        {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        },
+      ),
     },
     {
-      x: 0,
-      y: -10,
-      transformOri: "160px center",
-      moveCircleX: interpolate(frame, [271, 281], [0, 100], {
+      moveCircleX: interpolate(frame, [271, 281], [0, 79], {
         extrapolateLeft: "clamp",
         extrapolateRight: "clamp",
       }),
@@ -64,12 +103,29 @@ export const HelloWorld: React.FC = ({}) => {
         extrapolateLeft: "clamp",
         extrapolateRight: "clamp",
       }),
+      height: interpolate(
+        frame,
+        [
+          275, 279, 285, 290, 300, 304, 308, 315, 328, 330, 339, 344, 350, 353,
+          359, 364, 370, 373, 379, 384, 386, 389, 390, 393, 398, 401, 405, 408,
+          413, 418, 424, 428, 433, 437, 439, 444, 449, 452, 456, 458, 463, 469,
+          473, 477, 480, 483, 489, 493, 496, 500, 502, 508, 512,
+        ],
+        [
+          150, 100, 180, 100, 180, 100, 150, 100, 120, 150, 100, 180, 100, 150,
+          100, 130, 100, 150, 100, 125, 150, 100, 130, 100, 100, 120, 150, 100,
+          180, 100, 150, 125, 150, 150, 100, 130, 100, 150, 100, 105, 150, 120,
+          100, 150, 100, 120, 180, 100, 150, 120, 150, 100, 180,
+        ],
+        {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        },
+      ),
     },
+
     {
-      x: 75,
-      y: -10,
-      transformOri: "165px center",
-      moveCircleX: interpolate(frame, [271, 281], [75, 250], {
+      moveCircleX: interpolate(frame, [271, 281], [75, 163], {
         extrapolateLeft: "clamp",
         extrapolateRight: "clamp",
       }),
@@ -77,14 +133,26 @@ export const HelloWorld: React.FC = ({}) => {
         extrapolateLeft: "clamp",
         extrapolateRight: "clamp",
       }),
+      height: interpolate(
+        frame,
+        [
+          275, 279, 285, 290, 300, 304, 308, 315, 328, 330, 339, 344, 350, 353,
+          359, 364, 370, 373, 379, 384, 386, 389, 390, 393, 398, 401, 405, 408,
+          413, 418, 424, 428, 433, 437, 439, 444, 449, 452, 456, 458, 463, 469,
+          473, 477, 480, 483, 489, 493, 496, 500, 502, 508, 512,
+        ],
+        [
+          120, 150, 100, 180, 100, 125, 150, 100, 130, 100, 150, 100, 105, 180,
+          180, 100, 150, 100, 100, 150, 100, 120, 100, 120, 180, 100, 150, 100,
+          125, 150, 100, 130, 150, 100, 100, 130, 100, 150, 100, 100, 100, 150,
+          100, 130, 100, 150, 100, 180, 100, 150, 125, 150, 100,
+        ],
+        {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        },
+      ),
     },
-  ];
-  const circles2 = [
-    { x: -200, y: 50, transformOri: "150px center" },
-    { x: -50, y: 50, transformOri: "152px center" },
-    { x: 0, y: 50, transformOri: "155px center", vis: "false" },
-    { x: 100, y: 50, transformOri: "160px center" },
-    { x: 250, y: 50, transformOri: "165px center" },
   ];
 
   // Fade out the animation at the end
@@ -92,6 +160,19 @@ export const HelloWorld: React.FC = ({}) => {
     frame,
     [0, 20, 21, 25, 30, 48, 50, 65, 69, 71, 73, 84, 271, 272, 280, 512],
     [1, 1, 1.1, 1, 1.1, 1, 1.1, 1, 1.1, 1, 1.13, 1.1, 1.1, 1.1, 1.1, 1.1],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    },
+  );
+  const scale2 = interpolate(frame, [275, 279, 295, 310], [1, 0.9, 0.6, 0.4], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const height = interpolate(
+    frame,
+    [275, 279, 285, 290, 300, 304, 308, 315, 328],
+    [180, 100, 150, 100, 180, 100, 150, 100, 120],
     {
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
@@ -132,69 +213,13 @@ export const HelloWorld: React.FC = ({}) => {
               ? orbitAnimation2.rotate.to((r) => `rotate(${r}deg)`)
               : "",
           position: "relative",
-          visibility: frame < 271 ? "visible" : "hidden",
+          visibility: frame < 275 ? "visible" : "hidden",
         }}
       >
         {props.children}
       </animated.div>
     );
   };
-  function moveX(x1: number, x2: number) {
-    const circle1 = circles[x1];
-    const circle2 = circles2[x2];
-
-    if (circle1 && circle2) {
-      return interpolate(frame, [271, 281], [circle1.x, circle2.x], {
-        extrapolateLeft: "clamp",
-        extrapolateRight: "clamp",
-      });
-    }
-    return 0; // Fallback in case of undefined circles
-  }
-  function moveY(y1: number, y2: number) {
-    const circle1 = circles[y1];
-    const circle2 = circles2[y2];
-
-    if (circle1 && circle2) {
-      return interpolate(frame, [271, 281], [circle1.y, circle2.y], {
-        extrapolateLeft: "clamp",
-        extrapolateRight: "clamp",
-      });
-    }
-    return 0; // Fallback in case of undefined circles
-  }
-  const moveCircle1X = interpolate(frame, [271, 281], [30, Number(-200)], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const moveCircle1Y = interpolate(frame, [271, 281], [Number(100), 50], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const moveCircle2X = interpolate(frame, [271, 281], [90, Number(-50)], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const moveCircle2Y = interpolate(frame, [271, 281], [Number(50), 50], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const moveCircle3X = interpolate(frame, [271, 281], [0, Number(100)], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const moveCircle3Y = interpolate(frame, [271, 281], [Number(0), 50], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const moveCircle4X = interpolate(frame, [271, 281], [75, Number(250)], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const moveCircle4Y = interpolate(frame, [271, 281], [Number(-10), 50], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
 
   const moveChunkX = interpolate(
     frame,
@@ -247,6 +272,7 @@ export const HelloWorld: React.FC = ({}) => {
       </animated.div>
     );
   };
+
   const scaleValue = interpolate(
     frame,
     [
@@ -257,7 +283,7 @@ export const HelloWorld: React.FC = ({}) => {
   );
   const trail = useTrail(circles.length, {
     scale: scaleValue, // Use frame-based scaling
-    config: { tension: 200, friction: 13 },
+    config: { tension: 200, friction: 10 },
   });
   const trail2 = useTrail(2, {
     scale: scaleValue, // Use frame-based scaling
@@ -276,13 +302,6 @@ export const HelloWorld: React.FC = ({}) => {
     config: { duration: 8000 }, // 3 seconds per revolution
   });
 
-  const midCirclesShift = useSpring({
-    from: { x: circles[0].x, y: circles[0].y },
-    to: { x: circles2[0].x, y: circles2[0].y }, // End position, moving away from the large circle
-    config: { tension: 120, friction: 14 }, // Spring config for smoothness
-    loop: false, // You can set this to true if you want it to loop
-  });
-  // A <AbsoluteFill> is just a absolutely positioned <div>!
   return (
     <AbsoluteFill className="bg-black">
       <svg style={{ position: "absolute", width: 0, height: 0 }}>
@@ -304,110 +323,20 @@ export const HelloWorld: React.FC = ({}) => {
                   ...style,
                   position: "absolute", // Make sure it's positioned absolutely
                   width: "180px",
-                  height: "180px" /*frame < 271 ? "180px" : "300px"*/,
-                  backgroundColor: "yellow",
-                  transform:
-                    frame < 271 ? style.scale.to((s) => `scale(${s})`) : "", // Apply frame-based
+                  height: frame < 271 ? "180px" : circles[index].height + "px",
+                  backgroundColor: "white",
+                  transform: style.scale.to((s) => `scale(${s})`),
                   borderRadius: "80px",
                   x: circles[index].moveCircleX + "%",
                   y: circles[index].moveCircleY + "%",
                   filter: "url(#goo)",
                   opacity: opacity3,
-                  visibility:
-                    circles2[index].vis && frame > 271 ? "hidden" : "visible",
+                  visibility: "visible",
+                  scaleX: scale2,
                 }}
               />
             );
           })}
-          {/* <animated.div
-            style={{
-              position: "absolute", // Make sure it's positioned absolutely
-              width: "180px",
-              height: "180px",
-              backgroundColor: "white",
-              // transform:
-              //   frame < 271 ? style.scale.to((s) => `scale(${s})`) : "", // Apply frame-based
-              borderRadius: "80px",
-              x: moveCircle1X + "%",
-              y: moveCircle1Y + "%",
-              filter: "url(#goo)",
-              opacity: opacity3,
-              visibility: circles2[0].vis && frame > 271 ? "hidden" : "visible",
-              // ...midCirclesShift,
-            }}
-          />
-          <animated.div
-            style={{
-              position: "absolute", // Make sure it's positioned absolutely
-              width: "180px",
-              height: "180px",
-              backgroundColor: "white",
-              // transform:
-              //   frame < 271 ? style.scale.to((s) => `scale(${s})`) : "", // Apply frame-based
-              borderRadius: "80px",
-              x: moveCircle2X + "%",
-              y: moveCircle2Y + "%",
-              filter: "url(#goo)",
-              opacity: opacity3,
-              visibility: circles2[1].vis && frame > 271 ? "hidden" : "visible",
-              // ...midCirclesShift,
-            }}
-          />
-          <animated.div
-            style={{
-              position: "absolute", // Make sure it's positioned absolutely
-              width: "180px",
-              height: "180px",
-              backgroundColor: "white",
-              // transform:
-              //   frame < 271 ? style.scale.to((s) => `scale(${s})`) : "", // Apply frame-based
-              borderRadius: "80px",
-              x: moveCircle3X + "%",
-              y: moveCircle3Y + "%",
-              filter: "url(#goo)",
-              opacity: opacity3,
-              visibility: circles2[2].vis && frame > 271 ? "hidden" : "visible",
-              // ...midCirclesShift,
-            }}
-          />
-          <animated.div
-            style={{
-              position: "absolute", // Make sure it's positioned absolutely
-              width: "180px",
-              height: "180px",
-              backgroundColor: "white",
-              // transform:
-              //   frame < 271 ? style.scale.to((s) => `scale(${s})`) : "", // Apply frame-based
-              borderRadius: "80px",
-              x: moveCircle3X + "%",
-              y: moveCircle3Y + "%",
-              filter: "url(#goo)",
-              opacity: opacity3,
-              visibility: circles2[3].vis && frame > 271 ? "hidden" : "visible",
-              // ...midCirclesShift,
-            }}
-          />
-          <animated.div
-            style={{
-              position: "absolute", // Make sure it's positioned absolutely
-              width: "180px",
-              height: "180px",
-              backgroundColor: "white",
-              // transform:
-              //   frame < 271 ? style.scale.to((s) => `scale(${s})`) : "", // Apply frame-based
-              borderRadius: "80px",
-              x: moveCircle4X + "%",
-              y: moveCircle4Y + "%",
-              filter: "url(#goo)",
-              opacity: opacity3,
-              visibility: circles2[4].vis && frame > 271 ? "hidden" : "visible",
-              // ...midCirclesShift,
-            }}
-          /> */}
-          {/* <Sequence from={0}></Sequence> */}
-          {/* <Sequence from={50}>
-          <CircleBlack />
-        </Sequence> */}
         </Circle>
         <CircleSmall />
       </Circle>
